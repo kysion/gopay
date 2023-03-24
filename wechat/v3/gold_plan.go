@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/go-pay/gopay"
+    "github.com/kysion/gopay"
 )
 
 // 点金计划管理API

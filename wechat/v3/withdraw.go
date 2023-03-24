@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/go-pay/gopay"
-	"github.com/go-pay/gopay/pkg/util"
+    "github.com/kysion/gopay"
+    "github.com/kysion/gopay/pkg/util"
 )
 
 // 特约商户余额提现、二级商户预约提现

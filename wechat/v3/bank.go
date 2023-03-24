@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/go-pay/gopay"
-	"github.com/go-pay/gopay/pkg/util"
+    "github.com/kysion/gopay"
+    "github.com/kysion/gopay/pkg/util"
 )
 
 // 获取对私银行卡号开户银行

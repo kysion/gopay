@@ -14,10 +14,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/go-pay/gopay"
-	"github.com/go-pay/gopay/pkg/util"
-	"github.com/go-pay/gopay/pkg/xlog"
-	"github.com/go-pay/gopay/pkg/xpem"
+    "github.com/kysion/gopay"
+    "github.com/kysion/gopay/pkg/util"
+    "github.com/kysion/gopay/pkg/xlog"
+    "github.com/kysion/gopay/pkg/xpem"
 )
 
 // Deprecated

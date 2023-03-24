@@ -3,8 +3,8 @@ package paypal
 import (
 	"testing"
 
-	"github.com/go-pay/gopay"
-	"github.com/go-pay/gopay/pkg/xlog"
+    "github.com/kysion/gopay"
+    "github.com/kysion/gopay/pkg/xlog"
 )
 
 func TestClient_CreateBillingPlan(t *testing.T) {

@@ -1,9 +1,9 @@
 package alipay
 
 import (
-	"github.com/go-pay/gopay"
-	"github.com/go-pay/gopay/alipay"
-	"github.com/go-pay/gopay/pkg/xlog"
+    "github.com/kysion/gopay"
+    "github.com/kysion/gopay/alipay"
+    "github.com/kysion/gopay/pkg/xlog"
 )
 
 func TradeRefund() {

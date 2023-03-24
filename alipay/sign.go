@@ -19,11 +19,11 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/go-pay/gopay"
-	"github.com/go-pay/gopay/pkg/util"
-	"github.com/go-pay/gopay/pkg/xlog"
-	"github.com/go-pay/gopay/pkg/xpem"
-	"github.com/go-pay/gopay/pkg/xrsa"
+	"github.com/kysion/gopay"
+	"github.com/kysion/gopay/pkg/util"
+	"github.com/kysion/gopay/pkg/xlog"
+	"github.com/kysion/gopay/pkg/xpem"
+	"github.com/kysion/gopay/pkg/xrsa"
 )
 
 // 允许进行 sn 提取的证书签名算法

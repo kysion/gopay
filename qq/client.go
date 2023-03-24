@@ -9,10 +9,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/go-pay/gopay"
-	"github.com/go-pay/gopay/pkg/util"
-	"github.com/go-pay/gopay/pkg/xhttp"
-	"github.com/go-pay/gopay/pkg/xlog"
+    "github.com/kysion/gopay"
+    "github.com/kysion/gopay/pkg/util"
+    "github.com/kysion/gopay/pkg/xhttp"
+    "github.com/kysion/gopay/pkg/xlog"
 )
 
 type Client struct {

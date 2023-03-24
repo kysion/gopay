@@ -8,7 +8,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/go-pay/gopay/pkg/jwt"
+    "github.com/kysion/gopay/pkg/jwt"
 )
 
 type SignConfig struct {

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/go-pay/gopay"
+    "github.com/kysion/gopay"
 )
 
 // 发起商家转账API
