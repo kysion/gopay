@@ -209,6 +209,7 @@ func (a *Client) doAliPay(ctx context.Context, bm gopay.BodyMap, method string, 
 		bizContent, url string
 		bodyBs          []byte
 	)
+
 	if bm != nil {
 		_, has := notRemoveAppAuthToken[method]
 		if has {
@@ -348,8 +349,15 @@ func (a *Client) pubParamsHandle(bm gopay.BodyMap, method, bizContent string, au
 	if len(authToken) > 0 {
 		pubBody.Set("auth_token", authToken[0])
 	}
-	if bizContent != util.NULL {
+	_, ignoreBiz := ignoreBizContent[method]
+	if bizContent != util.NULL && ignoreBiz == false {
 		pubBody.Set("biz_content", bizContent)
+	} else {
+		for k, v := range bm {
+			if pubBody.GetInterface(k) == nil {
+				pubBody.Set(k, v)
+			}
+		}
 	}
 	// sign
 	sign, err := a.getRsaSign(pubBody, pubBody.GetString("sign_type"), a.privateKey)

@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"strings"
 
-    "github.com/kysion/gopay"
-    "github.com/kysion/gopay/pkg/util"
+	"github.com/kysion/gopay"
+	"github.com/kysion/gopay/pkg/util"
 )
 
 // alipay.system.oauth.token(换取授权访问令牌)
@@ -77,6 +77,34 @@ func (a *Client) UserInfoShare(ctx context.Context, authToken string) (aliRsp *U
 	signData, signDataErr := a.getSignData(bs, aliRsp.AlipayCertSn)
 	aliRsp.SignData = signData
 	return aliRsp, a.autoVerifySignByCert(aliRsp.Sign, signData, signDataErr)
+}
+
+func (a *Client) SubmitVersion(ctx context.Context, bm gopay.BodyMap) (aliRsp *SubmitAppVersionAuditRes, err error) {
+	var bs []byte
+	if bs, err = a.doAliPay(ctx, bm, "alipay.open.mini.version.audit.apply"); err != nil {
+		return nil, err
+	}
+	aliRsp = new(SubmitAppVersionAuditRes)
+	if err = json.Unmarshal(bs, aliRsp); err != nil || aliRsp == nil {
+		return nil, fmt.Errorf("[%w], bytes: %s", gopay.UnmarshalErr, string(bs))
+	}
+	if aliRsp.AlipayOpenMiniVersionAuditApplyResponse != nil {
+		info := aliRsp.AlipayOpenMiniVersionAuditApplyResponse.ErrorResponse
+		return aliRsp, fmt.Errorf(`{"code":"%s","msg":"%s","sub_code":"%s","sub_msg":"%s"}`, info.Code, info.Msg, info.SubCode, info.SubMsg)
+	}
+	signData, signDataErr := a.getSignData(bs, a.AliPayPublicCertSN)
+	return aliRsp, a.autoVerifySignByCert(aliRsp.Sign, signData, signDataErr)
+}
+
+type SubmitAppVersionAuditRes struct {
+	Sign                                    string                                   `json:"sign"`
+	AlipayOpenMiniVersionAuditApplyResponse *AlipayOpenMiniVersionAuditApplyResponse `json:"alipay_open_mini_version_audit_apply_response"`
+}
+
+type AlipayOpenMiniVersionAuditApplyResponse struct {
+	ErrorResponse
+	SpeedUp     string `json:"speed_up"`
+	SpeedUpMemo string `json:"speed_up_memo"`
 }
 
 // alipay.user.info.auth(用户登陆授权)

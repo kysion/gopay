@@ -20,6 +20,11 @@ var (
 	notRemoveAppAuthToken = map[string]bool{
 		"alipay.open.auth.token.app.query": true,
 	}
+
+	//不需要处理AppAuthToken的方法
+	ignoreBizContent = map[string]bool{
+		"alipay.open.mini.version.audit.apply": true,
+	}
 )
 
 type PKCSType uint8
